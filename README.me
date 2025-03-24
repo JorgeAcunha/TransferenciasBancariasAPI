@@ -1,0 +1,112 @@
+# API Transferencias Bancarias
+
+## Descripción
+API REST para realizar transferencias bancarias entre cuentas, consultar saldo e historial de transferencias. 
+Implementada en .NET 8, con base de datos PostgreSQL, autenticación JWT, contenedores Docker y documentación Swagger.
+
+## Requisitos Previos
+
+- [.NET SDK 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+
+## Instrucciones para Ejecutar la Aplicación
+
+### Clonar el repositorio
+
+
+git clone <URL_DEL_REPOSITORIO>
+cd TransferenciasBancarias
+
+
+### Levantar el entorno con Docker
+
+docker-compose up --build
+
+Esto levantará:
+- La API en `http://localhost:5106`
+- La base de datos PostgreSQL
+
+La base de datos se inicializa automáticamente con las migraciones y datos necesarios.
+
+### Acceder a Swagger
+
+Puedes probar todos los endpoints y autenticarte desde:
+
+
+http://localhost:5106/swagger/index.html
+
+
+### Autenticación
+
+Utiliza el endpoint `/api/Auth/login` con las siguientes credenciales de ejemplo:
+
+```json
+{
+  "username": "admin",
+  "password": "password"
+}
+```
+
+Importante: Para probar los endpoints protegidos en Swagger, copia el token y presiona el botón "Authorize", pega el token con el prefijo Bearer .
+
+## Colección Postman
+
+Se incluye el archivo TransferenciasBancarias.postman_collection.json dentro de la carpeta postman en la raíz del repositorio.
+Puedes importar esta colección en Postman para probar todos los endpoints expuestos por la API, incluyendo el flujo completo con autenticación JWT.
+    -Instrucciones para importar la colección:
+1.Abre Postman.
+
+2.Haz clic en Import.
+
+3.Selecciona la opción File y elige el archivo ubicado en:
+
+    /postman/TransferenciasBancarias.postman_collection.json
+
+4.Una vez importado, podrás ver la colección lista para usar.
+
+
+
+## Diagrama de Arquitectura
+
+El diagrama de la solución se encuentra en la carpeta `diagramas/` del repositorio.
+
+## Tecnologías Utilizadas
+
+- .NET 8
+- Entity Framework Core
+- PostgreSQL
+- Docker & Docker Compose
+- JWT Authentication
+- Swagger / OpenAPI
+
+## Estructura Principal del Proyecto
+
+```
+TransferenciasBancarias/
+├── Controllers/        # Controladores API
+├── Models/             # Modelos de datos
+├── Data/               # DbContext y configuraciones
+├── Services/           # Lógica de negocio
+├── Middlewares/        # Middleware para manejo de excepciones
+├── docker-compose.yml  # Configuración de Docker
+├── TransferenciasBancarias.csproj
+├── README.md
+└── TransferenciasBancarias.postman_collection.json
+```
+
+## Logs y Manejo de Excepciones
+
+Se implementa middleware personalizado para el manejo global de errores, devolviendo respuestas consistentes y registrando logs significativos.
+
+## Estados HTTP y Estándares
+
+- Uso apropiado de verbos HTTP (GET, POST, PUT)
+- Códigos HTTP correctos (200, 201, 400, 404, 500)
+- Interfaces limpias y mantenibles
+
+---
+
+## Contacto
+
+Para dudas o sugerencias: [Jorge Acuña / jorgeacuaalarcon96@gmail.com].
+

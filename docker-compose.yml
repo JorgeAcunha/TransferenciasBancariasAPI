@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_transferencias
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  transferencias_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: transferencias_api
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgres_transferencias;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+    ports:
+      - "5106:5106"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
