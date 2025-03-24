@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS "Transferencias" (
   FOREIGN KEY ("CuentaDestinoId") REFERENCES "CuentasBancarias"("Id")
 );
 
--- Insertar datos de prueba
+-- Inserta datos de prueba
 INSERT INTO "CuentasBancarias" ("NumeroCuenta", "Titular", "Saldo")
 VALUES
 ('1001', 'Jorge Usuario', 5000.00),

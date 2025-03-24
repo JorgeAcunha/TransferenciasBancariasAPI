@@ -26,7 +26,7 @@ Esto levantará:
 - La API en `http://localhost:5106`
 - La base de datos PostgreSQL
 
-La base de datos se inicializa automáticamente con las migraciones y datos necesarios.
+La base de datos se inicializa automáticamente utilizando el archivo init.sql con las tablas y datos de prueba necesarios.
 
 ### Acceder a Swagger
 
@@ -60,7 +60,7 @@ Puedes importar esta colección en Postman para probar todos los endpoints expue
 
 3.Selecciona la opción File y elige el archivo ubicado en:
 
-    /postman/TransferenciasBancarias.postman_collection.json
+    postman/TransferenciasBancarias.postman_collection.json
 
 4.Una vez importado, podrás ver la colección lista para usar.
 
@@ -68,7 +68,7 @@ Puedes importar esta colección en Postman para probar todos los endpoints expue
 
 ## Diagrama de Arquitectura
 
-El diagrama de la solución se encuentra en la carpeta `diagramas/` del repositorio.
+El diagrama de la solución se encuentra en la carpeta Diagrama/ del repositorio.
 
 ## Tecnologías Utilizadas
 
@@ -89,6 +89,7 @@ TransferenciasBancarias/
 ├── Services/           # Lógica de negocio
 ├── Middlewares/        # Middleware para manejo de excepciones
 ├── docker-compose.yml  # Configuración de Docker
+├── init-db/            # Scripts para inicializar la base de datos
 ├── TransferenciasBancarias.csproj
 ├── README.md
 └── TransferenciasBancarias.postman_collection.json
