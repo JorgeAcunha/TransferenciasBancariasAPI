@@ -28,6 +28,19 @@ Esto levantará:
 
 La base de datos se inicializa automáticamente utilizando el archivo init.sql con las tablas y datos de prueba necesarios.
 
+###NOTA IMPORTANTE###
+Configuración de la Base de Datos
+La API y la base de datos PostgreSQL están preconfiguradas mediante Docker y el archivo .env. Por defecto, no es necesario modificar nada para ejecutar el proyecto localmente con Docker.
+
+Sin embargo, si deseas conectarte manualmente a la base de datos o ejecutar la API fuera de Docker, asegúrate de ajustar tu instancia de PostgreSQL con las siguientes credenciales:
+
+POSTGRES_USER= usuario_postgres
+POSTGRES_PASSWORD= tu_contraseña
+POSTGRES_DB=TransferenciasBancarias
+
+La cadena de conexión se configura automáticamente mediante variables de entorno en el archivo docker-compose.yml. Si decides ejecutar la API fuera de Docker, puedes actualizar la cadena de conexión en el archivo appsettings.Development.json o establecer las variables de entorno correspondientes.
+
+
 ### Acceder a Swagger
 
 Puedes probar todos los endpoints y autenticarte desde:
